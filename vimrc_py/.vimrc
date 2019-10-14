@@ -10,6 +10,7 @@
 " ctrl+p   close current tab
 " ctrl+x   change to next buffer
 " ctrl+s   close and save current buffer
+" space    fold code
 " """"""""""""""""""""""""""""""""
 
 set mouse=a
@@ -51,10 +52,6 @@ set listchars=tab:--,trail:~,extends:>,precedes:<
 set listchars+=space:‧
 set listchars+=eol:$
 
-" set vp+0 to foldable
-set foldmethod=manual
-nnoremap <F10>@=(foldclosed(line('.'))<0) ? 'zc' : 'zo'<CR>
-
 " ctrl+a+c effect
 map <C-A> ggVGY
 map! <C-A> <Esc>ggVGY
@@ -77,6 +74,7 @@ au Filetype python set fileformat=unix
 au Filetype python set foldmethod=indent
 au Filetype pythin set foldlevel=99
 autocmd Filetype python set foldmethod=indent
+noremap <space> za
 autocmd Filetype python set foldlevel=99
 
 " auto run by volume up+5
@@ -110,7 +108,12 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Valloric/YouCompleteMe'
 set completeopt-=preview
+set completeopt=longest,menu
+let g:ycm_complete_in_comments=1
+let g:ycm_error_symbol='>✘'
+let g:ycm_warning_symbol='>!'
 let g:ycm_min_num_identifier_candidate_chars=2
+let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_complete_in_strings=1
 let g:ycm_filetype_whitelist={
@@ -128,6 +131,9 @@ let g:ycm_semantic_tiggers={
 			\ 'cs,lua,javascript': ['re!\w{2}'],
 			\ }
 map <leader>t :YcmCompleter GoToDefinitionElseDeclaration<CR>
+if !empty(glob("~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"))
+	let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+endif
 
 Plugin 'Chiel92/vim-autoformat'
 nnoremap <F6> :Autoformat<CR>
