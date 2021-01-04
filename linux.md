@@ -1,14 +1,18 @@
 
 ```shell
+!!：             将被替换为上一句命令
 >：              执行结果重定向到指定位置，将本应显示在终端的内容保存到指定文件中
-		   cat fileName > text（text不存在则创建，存在覆盖其内容）
-		   ls -ahl >> text（不论text存不存在，都将内容写进text最后
+		cat fileName > text（text不存在则创建，存在覆盖其内容）
+		ls -ahl >> text（不论text存不存在，都将内容写进text最后
 *：              适配符，适配任意长度字符，可以为空
 ?：              适配符，适配一个字符，不能为空
+{,}：            group符，适配枚举的内容
+{1..9}：         扩展符，适配 1-9，支持 a-z
+ | ：            链接两个命令，常用于通过后命令拓展前命令
+
 [requre] --help：显示该命令的所有可扩展操作
 man [section] requre：通过文档形式显示有关此命令的指南，可以选择章节
 history：        显示操作历史记录
- | ：            链接两个命令，常用于通过后命令拓展前命令
 which requre：   显示命令的路径
 ps [commond]：   显示进程
            ps -a:显示终端所有进程，包括所有用户的
@@ -38,11 +42,11 @@ usermod [commond] groupName userName：用户组
            usermod -aG groupName userName：给用户添加用户组
 chmod [commond] fileName：修改权限
            chmod 777 fileName -R:修改该文件夹下所有文件的权限为777
-     文字法：chmod [u/g/o/a] [+/-/=] [r/w/x] fileName
+      文字法：chmod [u/g/o/a] [+/-/=] [r/w/x] fileName
            [u/g/o/a]:[所有者/所有者所在组/其它/所有人]
            [+/-/=]:[增加权限/删除权限/设定权限]
            [r/w/x]:[读/写/执行]
-     数字法：chmod [limet] fileName
+      数字法：chmod [limet] fileName
            [limet]:三位(u/g/o)，每位数字是其权限的和
            [r/w/x]:[4/2/1]
 chown fileName：修改文件所有者
@@ -84,7 +88,8 @@ mv fileName [/path,newName]：移动或重命名文件、文件夹
            mv fileName /path -f:忽略错误强制
            mv fileName /path -i:移动或重命名时给出确认的选项
            mv fileName /path -v:显示移动进度
-cd /path：       cd -:载入上次所在目录，再次命令则跳回
+cd /path： 
+           cd -:载入上次所在目录，再次命令则跳回
            cd ~:跳转到当前用户的/home目录
 pwd：            显示当前路径
 mkdir fileName：          创建文件夹
@@ -120,8 +125,8 @@ gzip [commond] fileName：压缩或解压文件
            gzip -r fileName:压缩文件
 zip (-r) toFile fileName：压缩fileName为toFile.zip
 unzip -d toFile fileName：解压fileName.zip到toFile
-grep [commond] ‘string’ fileName：在对应文件内搜索包含string字词的行，string可以是正则表达式
-           grep -v 'string' fileName:显示不包含匹配到的行
-           grep -n 'string' fileName:显示匹配行及行号
-           grep -i 'string' fileName:忽略大小写
+grep [commond] ‘string’ fileName/dir：在对应文件(夹)内搜索包含string字词的行，string可以是正则表达式
+           grep -v 'string' name:显示不包含匹配到的行
+           grep -n 'string' name:显示匹配行及行号
+           grep -i 'string' name:忽略大小写
 ```
