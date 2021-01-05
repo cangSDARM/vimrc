@@ -15,7 +15,7 @@
 
 set mouse=a
 set enc=utf8
-set fileencodings=utf-8,gb2312,gbk,ucs-bom,cp936
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set nu
 set fencs=utf8,gbk,gb2312,gb18030
 set cursorline

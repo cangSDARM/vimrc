@@ -5,9 +5,9 @@ Welcome to Termux!
 
 USEFUL CMD
   nmap <URL>  :scan the prot at the url
-  hydra       :hack or something. i dont kno
+  hydra       :brute force ssh/mysql
+  exiftool <FILE_FULLNAME> :watch/change file meta-data
   whatportis <PORT> :check prot used to do what
-  cd D-TECT/python2 d-tect.py :penetration test
   cd XSStrike/python xsstrike.py :xss check
   nginx       :start nginx server using root
 
