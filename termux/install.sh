@@ -59,12 +59,14 @@ gitInstall() {
 
     ssh-keygen
     if [ -f "$HOME/.ssh/id_rsa.pub" ]; then
-        cat id_rsa.pub >authorized_keys
+        cat "$HOME/.ssh/id_rsa.pub" >authorized_keys
         sed 's/PasswordAuthentication\ yes/PasswordAuthentication\ no/gI' "$PREFIX/etc/ssh/sshd_config"
+        cat "$HOME/.ssh/id_rsa.pub"
         try_continue
-        ssh -T git@github.com
-        pkill sshd
-        sshd
+        if ssh -T git@github.com; then
+            pkill sshd
+            sshd
+        fi
     else
         echo "keygen failed"
         exit 1
