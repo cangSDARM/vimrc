@@ -54,7 +54,7 @@ mirrorInstall() {
 gitInstall() {
     echo "[2] Git setting..."
     pkg install -y git
-    curl -fsLo "$HOME/.gitconfig https://cdn.jsdelivr.net/gh/cangSDARM/vimrc@master/.gitconfig"
+    curl -fsLo "$HOME/.gitconfig" https://cdn.jsdelivr.net/gh/cangSDARM/vimrc@master/.gitconfig
     mkdir "$HOME/git_storage"
 
     ssh-keygen
