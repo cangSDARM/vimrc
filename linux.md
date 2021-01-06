@@ -129,4 +129,7 @@ grep [commond] ‘string’ fileName/dir：在对应文件(夹)内搜索包含st
            grep -v 'string' name:显示不包含匹配到的行
            grep -n 'string' name:显示匹配行及行号
            grep -i 'string' name:忽略大小写
+
+sudo strace -e lstat ls -l > /dev/null：使用strace来显示ls执行时，对系统调用的执行结果
+perf：命令不会报告时间和内存的消耗，而是报告与程序相关的系统事件。可以检测缓存命中、页错误等
 ```

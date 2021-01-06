@@ -17,6 +17,11 @@ for file in "$@"; do
     fi
 done
 
+# colorful
+for R in $(seq 0 20 255); do
+    printf "\e[38;2;%s;255;255m c \e[0m" "$R"
+done
+
 fuc() {
     echo "hello"
 }
